@@ -36,9 +36,10 @@ final class CameraConfigurationManager {
   private Point screenResolution;
   private Point cameraResolution;
   private int previewFormat;
-  private String previewFormatString;
+    private String previewFormatString;
+    private boolean flashEnabled;
 
-  CameraConfigurationManager(Context context) {
+    CameraConfigurationManager(Context context) {
     this.context = context;
   }
 
@@ -184,7 +185,12 @@ final class CameraConfigurationManager {
       parameters.set("flash-value", 2);
     }
     // This is the standard setting to turn the flash off that all devices should honor.
-    parameters.set("flash-mode", "off");
+
+      if(flashEnabled) {
+          parameters.set("flash-mode", "torch");
+      } else {
+          parameters.set("flash-mode", "off");
+      }
   }
 
   private void setZoom(Camera.Parameters parameters) {
@@ -250,4 +256,7 @@ final class CameraConfigurationManager {
     }
   }
 
+    public void enableFlash(boolean state) {
+        flashEnabled = true;
+    }
 }
