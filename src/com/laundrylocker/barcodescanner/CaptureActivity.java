@@ -198,7 +198,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 }
 
                 // pplante - intents can now enable flash if they want..
-                CameraManager.get().enableFlash(intent.hasExtra(Intents.Scan.ENABLE_FLASH));
+                try {
+                    CameraManager.get().enableFlash(intent.hasExtra(Intents.Scan.ENABLE_FLASH));
+                } catch (IOException e) {
+                    Log.e("flash", e.toString());
+                }
+                Log.d("flash", "enabled = "+ intent.hasExtra(Intents.Scan.ENABLE_FLASH));
+
             } else if (dataString != null && dataString.contains(PRODUCT_SEARCH_URL_PREFIX) &&
                     dataString.contains(PRODUCT_SEARCH_URL_SUFFIX)) {
                 // Scan only products and send the result to mobile Product Search.

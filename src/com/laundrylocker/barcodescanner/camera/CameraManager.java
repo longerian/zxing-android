@@ -332,7 +332,12 @@ public final class CameraManager {
                 previewFormat + '/' + previewFormatString);
     }
 
-    public void enableFlash(boolean state) {
+    public void enableFlash(boolean state) throws IOException {
         configManager.enableFlash(state);
+
+        if (camera != null) {
+            configManager.setDesiredCameraParameters(camera);
+            camera.reconnect();
+        }
     }
 }
