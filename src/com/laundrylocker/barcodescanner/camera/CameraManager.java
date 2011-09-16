@@ -332,8 +332,8 @@ public final class CameraManager {
                 previewFormat + '/' + previewFormatString);
     }
 
-    public void enableFlash(boolean state) throws IOException {
-        configManager.enableFlash(state);
+    public void enableFlash(String flashMode) throws IOException {
+        configManager.enableFlash(flashMode);
 
         if (camera != null) {
             configManager.setDesiredCameraParameters(camera);

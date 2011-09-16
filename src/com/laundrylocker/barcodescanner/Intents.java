@@ -86,7 +86,7 @@ public final class Intents {
         public static final String WIDTH = "SCAN_WIDTH";
         public static final String HEIGHT = "SCAN_HEIGHT";
 
-        public static final String ENABLE_FLASH = "ENABLE_FLASH";
+        public static final String FLASH_MODE = "FLASH_MODE";
 
         /**
          * If a barcode is found, Barcodes returns RESULT_OK to onActivityResult() of the app which
